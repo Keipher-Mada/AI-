@@ -52,10 +52,10 @@ const generateAiImages = (userPrompt, userImgQuantity) => {
     }
 }
 
-
-
 const handleFormSubmission = (e) => {
     e.preventDefault();
+    if(isImageGenerating) return;
+    isImageGenerating = true;
 
     //retrived user input
     const userPrompt = e.srcElement[0].value;
