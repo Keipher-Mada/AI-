@@ -1,7 +1,8 @@
 const generateForm = document.querySelector(".generate-form");
 const imageGallery = document.querySelector(".image-gallery");
 
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "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";
+let isImageGenerating = false;
 
 const updatedImageCard = (imgDataArray) => {
     imgDataArray.forEach((imgObject, index) => {
@@ -16,34 +17,32 @@ const updatedImageCard = (imgDataArray) => {
         //remove loading screen when image is loaded
         imgElement.onload = () => {
             imgCard.classList.remove("loading");
-            downloadBtn,setAttribute("href",aiGeneratedImg);
-            downloadBtn,setAttribute("download",`${new Data().getTime()}.jpg`);
-
+            downloadBtn.setAttribute("href", aiGeneratedImg);
+            downloadBtn.setAttribute("download",`${new Date().getTime()}.jpg`);
         }
     });
 }
 
 //Send requrst to OpenAI API and fatch result
-const generateAiImages = (userPrompt, userImgQuantity) => {
+const generateAiImages = async (userPrompt, userImgQuantity) => {
     try {
         const responce = await fetch("https://api.openai.com/v1/images/generations", {
             method: "POST",
             header: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${OPENAI_API_KEY}`
+                Authorization: `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
                  prompt: userPrompt,
-                 n:parseInt(userImgQuantity),
+                 n: parseInt(userImgQuantity),
                  size: "512x512",
                  responce_format: "b64_json"
             })
-
         });
         
-        if(!responce.ok) throw new Error("Image cannot be facted, plaese try gain later.")
+        if(!responce.ok) throw new Error("Image cannot be fetched, plaese try gain later.");
 
-        const{ data } = await responce.json();
+        const { data } = await responce.json();
         updatedImageCard([...data]);
     } catch (error) {
         console.log(error.message);
