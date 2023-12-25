@@ -26,11 +26,11 @@ const updatedImageCard = (imgDataArray) => {
 //Send requrst to OpenAI API and fatch result
 const generateAiImages = async (userPrompt, userImgQuantity) => {
     try {
-        const responce = await fetch("https://api.openai.com/v1/images/generations", {
+        const response = await fetch("https://api.openai.com/v1/images/generations", {
             method: "POST",
             header: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${OPENAI_API_KEY}`
+                 "Authorization": `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
                  prompt: userPrompt,
