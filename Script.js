@@ -61,7 +61,7 @@ const handleFormSubmission = (e) => {
     const userImgQuantity = e.srcElement[1].value;
 
     //HTML markup for image in loading state
-    const imgCardMarkup = Array.form({lemgth: userImgQuantity}, () =>
+    const imgCardMarkup = Array.from({lemgth: userImgQuantity}, () =>
       `<div class="img-card loading">
       <img src="images/loader.svg" alt="image">
       <a href="#" class="download-btn">
