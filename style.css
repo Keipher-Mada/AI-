@@ -70,9 +70,9 @@
 }
 
 .generate-form .controls {
-    display: flex;
-    height: 100%;
-    gap: 15px;
+   display: flex;
+   height: 100%;
+   gap: 15px;
 }
 
 .generate-form .img-quantity {
@@ -92,7 +92,7 @@
     padding: 0 25px;
     cursor: pointer;
     border-radius: 30px;
-    background: blue;
+    background: rgb(36, 36, 204);
 }
 
 .image-gallery {
@@ -155,51 +155,46 @@
         font-size: 1.8rem;
     }
 
-
-   .image-generator h1 {
+   .image-generator p {
       font-size: 1rem;
+    }
+
+   .image-generator .generate-form {
+      margin-top: 30px;
+      height:  52px;
+      display: block;
+    }
+
+    .generate-form .controls {
+        height: 40px;
+        margin-top: 15px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+
+    .generate-form .img-quantity {
+        color: #fff;
+    }
+
+    .generate-form .img-quantity option {
+        color: #000000;
+    }
+
+    .generate-form .generate-button {
+        height: 100%;
+    }
+
+    .image-gallery .img-card:not(.loading) .download-btn  {
+        display: flex;
+    }
+
+    .image-gallery {
+        margin-top:20px;
     }
 }
 
-.image-generator .generate-form {
-    margin-top: 30px;
-    height:  52px;
-    display: block;
-}
-
-.generate-form .controls {
-    height: 40px;
-    margin-top: 15px;
-    align-items: center;
-    justify-content: flex-end;
-}
-
-.generate-form .img-quantity {
-    color: #fff;
-}
-
-.generate-form .img-quantity option {
-    color: #000000;
-}
-
-.generate-form .generate-button {
-    height: 100%;
-}
-
-.generate-form .generate-button {
-    margin-top: 20px;
-}
-
-.image-gallery .img-card:not(.loading):hover .download-btn  {
-    display: flex;
-}
-
-.image-gallery {
-    margin-top: 20px;
-}
-
 @media screen and (max-width: 550px) {
-  .image-gallery .img-card {
-    width: 100%;
+    .image-gallery .img-card {
+      width: 100%;
   }
 }
