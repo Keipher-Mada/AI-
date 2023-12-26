@@ -1,10 +1,10 @@
 const generateForm = document.querySelector(".generate-form");
 const imageGallery = document.querySelector(".image-gallery");
 
-const OPENAI_API_KEY = "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";
+const OPENAI_API_KEY = "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";
 let isImageGenerating = false;
 
-const updatedImageCard = (imgDataArray) => {
+const updateImageCard = (imgDataArray) => {
     imgDataArray.forEach((imgObject, index) => {
         const imgCard = imageGallery.querySelectorAll(".img-card")[index];
         const imgElement = imgCard.querySelector("img");
@@ -18,7 +18,7 @@ const updatedImageCard = (imgDataArray) => {
         imgElement.onload = () => {
             imgCard.classList.remove("loading");
             downloadBtn.setAttribute("href", aiGeneratedImg);
-            downloadBtn.setAttribute("download",`${new Date().getTime()}.jpg`);
+            downloadBtn.setAttribute("download", `${new Date().getTime()}.jpg`);
         }
     });
 }
@@ -28,22 +28,22 @@ const generateAiImages = async (userPrompt, userImgQuantity) => {
     try {
         const response = await fetch("https://api.openai.com/v1/images/generations", {
             method: "POST",
-            header: {
-                "Content-Type": "application/json",
+            headers: {
+                 "Content-Type": "application/json",
                  "Authorization": `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
                  prompt: userPrompt,
                  n: parseInt(userImgQuantity),
                  size: "512x512",
-                 responce_format: "b64_json"
+                 response_format: "b64_json"
             })
         });
         
-        if(!responce.ok) throw new Error("Image cannot be fetched, plaese try gain later.");
+        if(!response.ok) throw new Error("Image cannot be fetched, plaese try gain later.");
 
-        const { data } = await responce.json();
-        updatedImageCard([...data]);
+        const { data } = await response.json();
+        updateImageCard([...data]);
     } catch (error) {
         console.log(error.message);
     }  finally {
@@ -61,13 +61,13 @@ const handleFormSubmission = (e) => {
     const userImgQuantity = e.srcElement[1].value;
 
     //HTML markup for image in loading state
-    const imgCardMarkup = Array.from({lemgth: userImgQuantity}, () =>
-      `<div class="img-card loading">
-      <img src="images/loader.svg" alt="image">
-      <a href="#" class="download-btn">
-        <img src="images/download.svg" alt="download icon">
-      </a>
-    </div>`
+    const imgCardMarkup = Array.from({length: userImgQuantity}, () =>
+        `<div class="img-card loading">
+         <img src="images/loader.svg" alt="image">
+         <a href="#" class="download-btn">
+            <img src="images/download.svg" alt="download icon">
+         </a>
+        </div>`
     ).join("");
 
     imageGallery.innerHTML = imgCardMarkup;
