@@ -3,7 +3,7 @@ const imageGallery = document.querySelector(".image-gallery");
 
 
 let isImageGenerating = false;
-OPENAI_API_KEY = config.API_KEY;
+OPENAI_API_KEY = API_KEY;
 
 const updateImageCard = (imgDataArray) => {
     imgDataArray.forEach((imgObject, index) => {
