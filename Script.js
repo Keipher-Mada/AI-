@@ -1,6 +1,6 @@
 const generateForm = document.querySelector(".generate-form");
 const imageGallery = document.querySelector(".image-gallery");
-require('dotenv').config()
+require('dotenv').config();
 
 //Hiding API KEY with .env
 console.log(process.env);
