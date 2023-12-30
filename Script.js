@@ -1,3 +1,5 @@
+import 'dotenv/config'
+
 const generateForm = document.querySelector(".generate-form");
 const imageGallery = document.querySelector(".image-gallery");
 const dotenv = require('dotenv')
