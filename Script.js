@@ -1,6 +1,5 @@
 const generateForm = document.querySelector(".generate-form");
 const imageGallery = document.querySelector(".image-gallery");
-require('dotenv').config();
 const dotenv = require('dotenv')
 
 const API_KEY = process.env.OPENAI_API_KEY
