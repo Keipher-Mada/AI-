@@ -1,12 +1,9 @@
-import 'dotenv/config'
-
 const generateForm = document.querySelector(".generate-form");
 const imageGallery = document.querySelector(".image-gallery");
-const dotenv = require('dotenv')
 
-const API_KEY = process.env.OPENAI_API_KEY
 
 let isImageGenerating = false;
+OPENAI_API_KEY = config.API_KEY;
 
 const updateImageCard = (imgDataArray) => {
     imgDataArray.forEach((imgObject, index) => {
@@ -34,7 +31,7 @@ const generateAiImages = async (userPrompt, userImgQuantity) => {
             method: "POST",
             headers: {
                  "Content-Type": "application/json",
-                 "Authorization": `Bearer ${API_KEY}`
+                 "Authorization": `Bearer ${OPENAI_API_KEY}`
             },
             body: JSON.stringify({
                  prompt: userPrompt,
