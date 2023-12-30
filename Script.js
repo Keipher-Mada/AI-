@@ -1,9 +1,9 @@
 const generateForm = document.querySelector(".generate-form");
 const imageGallery = document.querySelector(".image-gallery");
 require('dotenv').config();
+const dotenv = require('dotenv')
 
-//Hiding API KEY with .env
-console.log(process.env);
+const API_KEY = process.env.OPENAI_API_KEY
 
 let isImageGenerating = false;
 
@@ -33,7 +33,7 @@ const generateAiImages = async (userPrompt, userImgQuantity) => {
             method: "POST",
             headers: {
                  "Content-Type": "application/json",
-                 "Authorization": `Bearer ${OPENAI_API_KEY}`
+                 "Authorization": `Bearer ${API_KEY}`
             },
             body: JSON.stringify({
                  prompt: userPrompt,
