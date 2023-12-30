@@ -3,7 +3,7 @@ const imageGallery = document.querySelector(".image-gallery");
 require('dotenv').config()
 
 //Hiding API KEY with .env
-const OPENAI_API_KEY = process.env
+console.log(process.env);
 
 let isImageGenerating = false;
 
