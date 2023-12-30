@@ -1,7 +1,10 @@
 const generateForm = document.querySelector(".generate-form");
 const imageGallery = document.querySelector(".image-gallery");
+require('dotenv').config()
 
-const OPENAI_API_KEY = "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";
+//Hiding API KEY with .env
+const OPENAI_API_KEY = process.env
+
 let isImageGenerating = false;
 
 const updateImageCard = (imgDataArray) => {
